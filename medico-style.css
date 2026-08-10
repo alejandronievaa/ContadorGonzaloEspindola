@@ -1,0 +1,467 @@
+/* =========================================================================
+   --- VARIABLES DE DISEÑO (Colores Médicos y Fuentes) ---
+   ========================================================================= */
+   :root {
+    --azul-clinico: #0a74b9;
+    --azul-oscuro: #064b78;
+    --celeste-suave: #e6f4fc;
+    --gris-fondo: #f8f9fa;
+    --texto-oscuro: #2b3a42;
+    --texto-mutado: #6c7a81;
+    --blanco: #ffffff;
+    --verde-exito: #28a745;
+}
+
+/* --- REGLAS GENERALES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al usar los enlaces del menú */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+    background-color: var(--blanco);
+    line-height: 1.6;
+}
+
+/* =========================================================================
+   --- CABECERA Y NAVEGACIÓN (HEADER) ---
+   ========================================================================= */
+.header-medico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-consultorio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icono-medico {
+    font-size: 2.2rem;
+}
+
+.texto-logo h1 {
+    font-size: 1.4rem;
+    color: var(--azul-oscuro);
+    letter-spacing: 1px;
+}
+
+.texto-logo p {
+    font-size: 0.85rem;
+    color: var(--texto-mutado);
+    font-weight: 500;
+}
+
+.nav-medico {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-medico a {
+    text-decoration: none;
+    color: var(--texto-oscuro);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+.nav-medico a:hover {
+    color: var(--azul-clinico);
+}
+
+/* BOTÓN DE TURNOS DEL MENÚ */
+.btn-turno-nav {
+    background-color: var(--azul-clinico);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-turno-nav:hover {
+    background-color: var(--azul-oscuro);
+}
+
+/* =========================================================================
+   --- SECCIÓN 1: SECCIÓN DE BIENVENIDA (HERO SECTION) ---
+   ========================================================================= */
+.seccion-presentacion {
+    background: linear-gradient(135deg, var(--blanco) 0%, var(--celeste-suave) 100%);
+    padding: 80px 5%;
+}
+
+.contenedor-presentacion {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.foto-medico {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: block;
+    margin: 0 auto;
+    
+    /* EFECTO: Se desliza desde la derecha y aparece suavemente en 1.2 segundos */
+    animation: deslizarFoto 1.2s ease-out forwards;
+}
+
+@keyframes deslizarFoto {
+    0% {
+        transform: translateX(100px); /* Arranca 100px hacia la derecha */
+        opacity: 0;                    /* Invisible al principio */
+    }
+    100% {
+        transform: translateX(0);     /* Llega a su posición original */
+        opacity: 1;                    /* Totalmente visible */
+    }
+}
+
+.bloque-texto-perfil h2 {
+    font-size: 2.5rem;
+    color: var(--azul-oscuro);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.bloque-texto-perfil p {
+    color: var(--texto-mutado);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.btn-accion-principal {
+    background-color: var(--azul-clinico);
+    color: var(--blanco);
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(10, 116, 185, 0.3);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-accion-principal:hover {
+    background-color: var(--azul-oscuro);
+    transform: translateY(-2px);
+}
+
+.foto-medico {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: block;
+    margin: 0 auto;
+}
+
+/* =========================================================================
+   --- SECCIÓN 2: SECCIÓN DE SERVICIOS (TARJETAS VISUALES) ---
+   ========================================================================= */
+.seccion-servicios, .seccion-ubicacion {
+    padding: 80px 5%;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.titulo-seccion h2 {
+    font-size: 2rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 10px;
+}
+
+.titulo-seccion p {
+    color: var(--texto-mutado);
+}
+
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-servicio {
+    background-color: var(--blanco);
+    border: 1px solid #eef2f5;
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.icono-servicio {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.tarjeta-servicio h3 {
+    font-size: 1.3rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 15px;
+}
+
+.tarjeta-servicio p {
+    color: var(--texto-mutado);
+    font-size: 0.95rem;
+}
+
+/* =========================================================================
+   --- SECCIÓN 3: UBICACIÓN Y CONTACTO ---
+   ========================================================================= */
+.seccion-ubicacion {
+    background-color: var(--gris-fondo);
+    max-width: 100%; /* Toma todo el ancho para pintar el fondo gris */
+}
+
+.contenedor-contacto {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background-color: var(--blanco);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.info-contacto h3 {
+    font-size: 1.1rem;
+    color: var(--azul-oscuro);
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.info-contacto h3:first-child {
+    margin-top: 0;
+}
+
+.info-contacto p {
+    color: var(--texto-mutado);
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #25d366;
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebd56;
+}
+
+.mapa-consultorio {
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #eef2f5;
+}
+
+/* =========================================================================
+   --- PIE DE PÁGINA (FOOTER) ---
+   ========================================================================= */
+.footer-medico {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    text-align: center;
+    padding: 30px 5%;
+    font-size: 0.9rem;
+}
+
+.estado-sistema {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* =========================================================================
+   --- VENTANA FLOTANTE PROFESIONAL (MODAL TURNERO) ---
+   ========================================================================= */
+.modal-medico-container {
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(43, 58, 66, 0.6); /* Fondo semi-transparente oscuro */
+    backdrop-filter: blur(4px); /* Suave desenfoque de fondo premium */
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-medico-contenido {
+    background-color: var(--blanco);
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto; /* Permite scroll dentro del cuadro si la pantalla del celu es muy chica */
+}
+
+.btn-cerrar-turnero {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    color: var(--texto-mutado);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-cerrar-turnero:hover {
+    color: #ff0000;
+}
+
+.modal-medico-contenido h2 {
+    color: var(--azul-oscuro);
+    margin-bottom: 10px;
+}
+
+.modal-medico-contenido p {
+    color: var(--texto-mutado);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+/* ESTILOS DEL FORMULARIO INTERNO */
+#form-solicitar-turno {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#form-solicitar-turno label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--texto-oscuro);
+}
+
+#form-solicitar-turno input, 
+#form-solicitar-turno select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+#form-solicitar-turno input:focus, 
+#form-solicitar-turno select:focus {
+    outline: none;
+    border-color: var(--azul-clinico);
+    box-shadow: 0 0 0 3px rgba(10, 116, 185, 0.15);
+}
+
+.btn-confirmar-turno {
+    background-color: var(--verde-exito);
+    color: var(--blanco);
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-confirmar-turno:hover {
+    background-color: #218838;
+}
+
+/* =========================================================================
+   --- 📱 REGLAS DE RESPONSIVIDAD (MEDIA QUERIES) ---
+   ========================================================================= */
+@media (max-width: 900px) {
+    /* El bloque de bienvenida pasa a una sola columna */
+    .contenedor-presentacion {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .bloque-texto-perfil h2 {
+        font-size: 2rem;
+    }
+    
+    /* El mapa y los datos bajan ordenados */
+    .contenedor-contacto {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    /* Reacomodamos la barra de menú arriba */
+    .header-medico {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .nav-medico {
+        width: 100%;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .nav-medico a {
+        font-size: 0.9rem;
+    }
+    
+    .btn-turno-nav {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
